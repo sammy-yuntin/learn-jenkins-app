@@ -27,6 +27,7 @@ pipeline {
                 ls -la
                 test -f "build/index.html"
                 cat build/index.html
+                npm ci
                 npm --version
                 npm test
                 '''

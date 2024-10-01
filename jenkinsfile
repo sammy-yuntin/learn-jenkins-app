@@ -54,13 +54,13 @@ pipeline {
             }
         }
     }*/
-    post{
+    
+} 
+post{
         always{
             junit 'test-results/junit.xml'
         }
     }
-} 
-
 
 /* pipeline {
     agent any

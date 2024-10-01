@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /* stage('Build') {
+        stage('Build') {
             agent{
                 docker{
                     image 'node:18-alpine'
@@ -19,8 +19,10 @@ pipeline {
                 #ls -la
                 '''
             }
-        } */
-        stage('Test'){
+        }
+
+
+        /* stage('Test'){
             agent{
                 docker{
                     image 'node:18-alpine'
@@ -56,5 +58,37 @@ pipeline {
         always{
             junit 'test-results/junit.xml'
         }
-    }
-}
+    }*/
+} 
+
+
+/* pipeline {
+    agent any
+
+    stages {
+        stage('without docker') {
+            steps {
+                sh '''
+                    echo "Without docker"
+                     ls -la
+                     touch containerNo.txt
+                '''
+            }
+        }
+        stage('With docker') {
+            agent{
+                docker{
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    echo "with docker"
+                    touch containerYES.txt
+                    ls -la
+                '''
+            }
+        }
+    }*/
+} 

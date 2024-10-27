@@ -6,8 +6,8 @@ pipeline {
         NETLIFY_SITE_ID = "a77fdfe1-7464-4547-b4c9-88578015e0f5"
         NETLIFY_AUTH_TOKEN = credentials("netlify_secret")
     }
-    stages {
-        /* stage('Build') {
+    stages { 
+        stage('Build') {
             agent{
                 docker{
                     image 'node:18-alpine'
@@ -21,13 +21,13 @@ pipeline {
                 #npm --version
                 #npm ci
                 #npm run build
-                ls -la
+                #ls -la
                 '''
             }
-        } */
+        }
         stage('Run Tests') {
             parallel {
-                stage('Test') {
+                stage('Test-NIL') {
                     agent {
                         docker {
                             image 'node:18-alpine'
@@ -43,15 +43,15 @@ pipeline {
                     }
 
                     post {
-                    always{
-                        junit 'jest-results/junit.xml'
-                        
+                        always{
+                            junit 'jest-results/junit.xml'
+                            
+                        }
                     }
-            }
                 }
 
         
-                stage('E2E'){
+                stage('E2E-NIL'){
                     agent{
                         docker {
                             image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
@@ -97,7 +97,7 @@ pipeline {
                             
                         '''
                     }
-                }
+        }
     }
 
          

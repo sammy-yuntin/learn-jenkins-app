@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 sh '''
-                echo "This shows my file list:"
+                echo "This shows my file list below:"
                 ls -la
                 #node --version
                 #npm --version
